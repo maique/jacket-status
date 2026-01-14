@@ -76,6 +76,14 @@
                 inset 0 0 40px rgba(0, 0, 0, 0.3);
         }
         
+        .status-message {
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            color: #999;
+            font-style: italic;
+            min-height: 1.5rem;
+        }
+        
         @keyframes pulseRed {
             0%, 100% {
                 box-shadow: 
@@ -124,6 +132,7 @@
         <div class="light-container">
             <div class="light loading" id="light"></div>
         </div>
+        <div class="status-message" id="statusMessage"></div>
         <div class="last-updated" id="lastUpdated">checking status...</div>
     </div>
 
@@ -137,11 +146,14 @@
                 
                 const light = document.getElementById('light');
                 const lastUpdated = document.getElementById('lastUpdated');
+                const statusMessage = document.getElementById('statusMessage');
                 
                 if (data.wearing_jacket) {
                     light.className = 'light red';
+                    statusMessage.textContent = '😢 Sorry, pick another one today...';
                 } else {
                     light.className = 'light green';
+                    statusMessage.textContent = '😘 You\'re good to go, Chefinho';
                 }
                 
                 if (data.last_updated) {
